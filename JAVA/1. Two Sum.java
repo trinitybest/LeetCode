@@ -13,7 +13,7 @@ class Solution {
     
 }
 
-// Approach 2: Two-pass Hash Table
+// Approach 3: One-pass Hash Table
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();

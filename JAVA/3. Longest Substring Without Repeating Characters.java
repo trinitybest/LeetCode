@@ -43,3 +43,25 @@ public class Solution {
     }
 
 }
+
+//Approach 3: Sliding Window Optimized
+/* I find the explanation for approach on leetcode website is counter intuitive
+*I find this link to have a better explanation:
+*https://www.baeldung.com/java-longest-substring-without-repeated-characters#optimized-approach
+*/
+public class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int n = s.length(), ans = 0;
+        Map<Character, Integer> map = new HashMap<>(); // current index of character
+        // try to extend the range [i, j]
+        for (int j = 0, i = 0; j < n; j++) {
+            if (map.containsKey(s.charAt(j))) {
+                i = Math.max(map.get(s.charAt(j))+1, i);
+            }
+            ans = Math.max(ans, j - i + 1);
+            map.put(s.charAt(j), j);
+        }
+        return ans;
+    }
+}
+
